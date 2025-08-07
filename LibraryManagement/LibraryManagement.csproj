@@ -2133,6 +2133,10 @@
     <Content Include="Global.asax" />
     <Content Include="LogoImg\download.jpg" />
     <Content Include=".gitignore.txt" />
+    <Content Include="SlideImg\book1.jpg" />
+    <Content Include="SlideImg\l1.jpg" />
+    <Content Include="SlideImg\l2.jpg" />
+    <Content Include="SlideImg\l3.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
