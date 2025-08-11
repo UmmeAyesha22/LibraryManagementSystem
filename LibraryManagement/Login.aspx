@@ -77,13 +77,13 @@
 
          <%--Navbar right icon--%>
          <div class="pmd-navbar-right-icon ml-auto">
-             <a class="btn btn-sm btn-primary" href="SignUp.aspx">SignUp</a>
+             <a id="signup" class="btn btn-sm btn-primary" href="SignUp.aspx">SignUp</a>
          <%--    <a class="btn btn-sm btn-primary" href="#">Loign</a>--%>
 
          </div>
      </nav>
 
-     <div class="jumbotron text-center alert alert-primary" style=""margin-bottom: 0">
+     <div class="jumbotron text-center alert alert-primary" style="margin-bottom: 0">
          <h1>Library Management System</h1>
          <p>Building community.Inspiring readers .Expanding book excess!</p>
 
@@ -113,20 +113,21 @@
           </div>
           <div class="col-sm-10 border border-info">
                 <%--Login Screen--%>
-
+              
 
               <div class="container">
       <h2>Login Panel</h2>
-                  <br />
-      <ul class="nav nav-tabs" id="toggleTabs">
-        <li class="nav-link active"><a data-toggle="tab" href="#home">User Login</a></li>
-       <li class="nav-link active"><a  data-toggle="tab" href="#menu1">Admin Login</a></li>
-       
-       
-      </ul>
-
+     <ul class="nav nav-tabs" id="toggleTabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#home">User Login</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#menu1">Admin Login</a>
+  </li>
+</ul>
       <div class="tab-content" id="tabContent">
-        <div id="home" class="tab-pane fade ">
+        <div id="home" class="tab-pane fade show active">
+
           <h3>User Login</h3>
           <p></p>
             <%--design login form--%>
@@ -166,7 +167,7 @@
                                          <asp:TextBox ID="TxtPassword" CssClass="form-control" placeholder="Password" TextMode="Password" runat="server"></asp:TextBox>
                                      </div>
                                          <div class="form-group">
-                                             <asp:Button ID="btnLogin"   CssClass="btn btn-success btn-lg btn-block"      runat="server" Text="Login" />
+                                             <asp:Button ID="btnLogin"   CssClass="btn btn-success btn-lg btn-block"      runat="server" Text="Login" OnClick="btnLogin_Click" />
                                          </div>
                                          <div class="form-group">
                                              <a href="SignUp.aspx"><input type="button" class="btn btn-info btn-lg btn-block" value="Sign Up" /></a>
