@@ -164,7 +164,7 @@
 
                                <label>Password</label>
                                      <div class="form-group">
-                                         <asp:TextBox ID="TxtPassword" CssClass="form-control" placeholder="Password" TextMode="Password" runat="server"></asp:TextBox>
+                                         <asp:TextBox ID="txtPassword" CssClass="form-control" placeholder="Password" TextMode="Password" runat="server"></asp:TextBox>
                                      </div>
                                          <div class="form-group">
                                              <asp:Button ID="btnLogin"   CssClass="btn btn-success btn-lg btn-block"      runat="server" Text="Login" OnClick="btnLogin_Click" />

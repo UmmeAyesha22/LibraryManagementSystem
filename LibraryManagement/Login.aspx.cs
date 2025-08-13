@@ -19,7 +19,29 @@ namespace LibraryManagement
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             //for member login
-            SqlCommand cmd = new SqlCommand("sqlquery", dbcon.GetCon());
+            SqlCommand cmd = new SqlCommand("sp_UserLogin", dbcon.GetCon());
+            dbcon.OpenCon();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@member_id", txtMemberID.Text);
+            cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    Response.Write("<script> alert('Login Successfully');</script>");
+                    Session["role"] = "user";
+                    Session["fullname"] = dr.GetValue(0).ToString();
+                    Session["username"] = dr.GetValue(1).ToString();
+                    Session["status"] = dr.GetValue(3).ToString();
+                }
+                Response.Redirect("~/UserScreen/UserHome.aspx");
+            }
+            else
+            {
+                Response.Write("<script> alert('Invalid username or password');</script>");
+            }
         }
     }
 }
