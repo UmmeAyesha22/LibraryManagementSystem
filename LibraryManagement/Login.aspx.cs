@@ -43,5 +43,35 @@ namespace LibraryManagement
                 Response.Write("<script> alert('Invalid username or password');</script>");
             }
         }
+
+        protected void btnAdminLogin_Click(object sender, EventArgs e)
+        {
+            //Admin Login Button
+            SqlCommand cmd = new SqlCommand("sp_AdminLogin", dbcon.GetCon());
+            dbcon.OpenCon();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@username", txtAdminID.Text.Trim());
+            cmd.Parameters.AddWithValue("@password", txtAdminPass.Text.Trim());
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    Response.Write("<script> alert('Login Successfully');</script>");
+                    Session["Adminrole"] = "Admin";
+                    Session["Adminusername"] = dr.GetValue(0).ToString();
+                    Session["Adminfullname"] = dr.GetValue(2).ToString();
+                    
+                   // Session["status"] = dr.GetValue(3).ToString();
+                }
+                Response.Redirect("~/Admin/AdminHome.aspx");
+            }
+            else
+            {
+                Response.Write("<script> alert('Invalid username or password');</script>");
+            }
+
+        }
     }
 }

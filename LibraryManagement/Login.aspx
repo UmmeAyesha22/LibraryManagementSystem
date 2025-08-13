@@ -230,7 +230,7 @@
                                <asp:TextBox ID="txtAdminPass" CssClass="form-control" placeholder="Password" TextMode="Password" runat="server"></asp:TextBox>
                            </div>
                                <div class="form-group">
-                                   <asp:Button ID="btnAdminLogin"   CssClass="btn btn-success btn-lg btn-block"      runat="server" Text="Login" />
+                                   <asp:Button ID="btnAdminLogin"   CssClass="btn btn-success btn-lg btn-block"      runat="server" Text="Login" OnClick="btnAdminLogin_Click" />
                                </div>
                                <div class="form-group">
                                    <a href="SignUp.aspx"><input type="button" class="btn btn-info btn-lg btn-block" value="Sign Up" /></a>

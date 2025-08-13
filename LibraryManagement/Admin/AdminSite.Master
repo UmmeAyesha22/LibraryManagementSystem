@@ -1,43 +1,43 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="User.master.cs" Inherits="LibraryManagement.UserScreen.User" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminSite.Master.cs" Inherits="LibraryManagement.Admin.AdminSite1" %>
 
 <!DOCTYPE html>
 
 <html>
 <head runat="server">
     <title></title>
-     <meta charset ="utf-8" />
- <meta name="viewport" content="width-device,initial-scale=1" />
+        <meta charset ="utf-8" />
+<meta name="viewport" content="width-device,initial-scale=1" />
 
- <%--1.Bootstrap CSS--%>
- 
-  <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<%--1.Bootstrap CSS--%>
+    
+ <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
- <%--2.datatable CSS--%>
+<%--2.datatable CSS--%>
 
- <link href="../dataTable/css/dataTables.dataTables.min.css" rel="stylesheet" />
+<link href="../dataTable/css/dataTables.dataTables.min.css" rel="stylesheet" />
 
- <%--3.Fontawesome CSS--%>
- <link href="../fontawesome/css/all.css" rel="stylesheet" />
-
-
- <%--4.Jquery JS--%>
- <script src="../Bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+<%--3.Fontawesome CSS--%>
+<link href="../fontawesome/css/all.css" rel="stylesheet" />
 
 
- <%--5.Popper JS--%>
- <script src="../Bootstrap/js/popper.min.js"></script>
+<%--4.Jquery JS--%>
+<script src="../Bootstrap/js/jquery-3.3.1.slim.min.js"></script>
 
 
- <%--6.Bootstrap JS--%>
+<%--5.Popper JS--%>
+<script src="../Bootstrap/js/popper.min.js"></script>
 
- <script src="../Bootstrap/js/bootstrap.min.js"></script>
+
+<%--6.Bootstrap JS--%>
+
+<script src="../Bootstrap/js/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-success">
+               <div>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a class="navbar-brand" href="default.aspx">
             <img src="../LogoImg/download.jpg" alt="logo" width="49" height="49" />
             LMS Application</a>
@@ -85,8 +85,8 @@
     </nav>
 
     <div class="jumbotron text-center alert alert-primary" style=""margin-bottom: 0">
-        <h1>Library Management System</h1>
-        <p>Building community.Inspiring readers .Expanding book excess!</p>
+        <h3>Admin Panel</h3>
+      
 
     </div>
     <div class="container-fluid">
@@ -110,7 +110,7 @@
              <hr class="d-sm-none" />
 
          </div>
-         <div class="col-sm-10 border border-info">
+         <div class="col-sm-10 border border-info" style="height:100%">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                    
                </asp:ContentPlaceHolder>
@@ -122,7 +122,7 @@
 
     <br />
     <div class="jumbotron text-center alert alert-danger" style="margin-bottom:0; border:2px solid red">
-         <p>Footer</p>
+         
          <div class="container">
         
 
@@ -140,7 +140,6 @@
 
    
  
-</div>
     </form>
 </body>
 </html>
