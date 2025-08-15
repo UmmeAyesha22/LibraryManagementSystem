@@ -12,9 +12,18 @@ namespace LibraryManagement.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (!IsPostBack)
+
+            if (Session["Adminrole"] != null && Session["Adminrole"].ToString() == "Admin")
             {
-                lblUserName.Text = Session["Adminfullname"].ToString();
+                if (!IsPostBack)
+                {
+
+                    lblUserName.Text = "Hi," + Session["Adminusername"].ToString();
+                }
+            }
+            else
+            {
+                Response.Redirect("~/signout.aspx");
             }
         }
     }

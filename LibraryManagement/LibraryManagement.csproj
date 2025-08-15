@@ -75,6 +75,7 @@
     <Content Include="dataTable\css\dataTables.dataTables.min.css" />
     <Content Include="dataTable\js\dataTables.min.js" />
     <Content Include="default.aspx" />
+    <Content Include="ErrorPage.aspx" />
     <Content Include="fontawesome\css\all.css" />
     <Content Include="fontawesome\css\all.min.css" />
     <Content Include="fontawesome\css\brands.css" />
@@ -2134,8 +2135,10 @@
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
     <Content Include="LogoImg\download.jpg" />
+    <Content Include="LogoImg\err.jpg" />
     <Content Include="LogoImg\img.jpg" />
     <Content Include="LogoImg\img2.jpg" />
+    <Content Include="LogoImg\logo.jpg" />
     <Content Include="signout.aspx" />
     <Content Include="SignUp.aspx" />
     <Content Include="SlideImg\book1.jpg" />
@@ -2167,6 +2170,13 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

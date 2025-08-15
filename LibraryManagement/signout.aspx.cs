@@ -13,7 +13,7 @@ namespace LibraryManagement
         {
             Session.Abandon();
             Session.Clear();
-            Response.Redirect("~/default.aspx");
+            Response.Redirect("default.aspx");
 
         }
     }

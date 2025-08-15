@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Login</title>
+    <link rel="shortcut icon" href="LogoImg/logo.jpg" />
 
     <meta charset ="utf-8" />
 <meta name="viewport" content="width-device,initial-scale=1" />
@@ -230,7 +231,7 @@
                                <asp:TextBox ID="txtAdminPass" CssClass="form-control" placeholder="Password" TextMode="Password" runat="server"></asp:TextBox>
                            </div>
                                <div class="form-group">
-                                   <asp:Button ID="btnAdminLogin"   CssClass="btn btn-success btn-lg btn-block"      runat="server" Text="Login" OnClick="btnAdminLogin_Click" />
+                                   <asp:Button ID="btnAdminLogin"   CssClass="btn btn-success btn-lg btn-block"      runat="server" Text="AdminLogin" OnClick="btnAdminLogin_Click" />
                                </div>
                                <div class="form-group">
                                    <a href="SignUp.aspx"><input type="button" class="btn btn-info btn-lg btn-block" value="Sign Up" /></a>

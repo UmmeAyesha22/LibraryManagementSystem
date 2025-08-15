@@ -7,15 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace LibraryManagement
 {
-    public partial class SignUp : System.Web.UI.Page
+    public partial class ErrorPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void btnSignup_Click(object sender, EventArgs e)
-        {
+            errorDesp.Text = Request.QueryString["ErrorMessage"];
 
         }
     }
