@@ -12,7 +12,7 @@ namespace LibraryManagement.UserScreen
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty((string)Session["role"]) && Session["role"].Equals("user"))
+            if (Session["role"]!=null && Session["role"].ToString()== "user")
 
             {
 
