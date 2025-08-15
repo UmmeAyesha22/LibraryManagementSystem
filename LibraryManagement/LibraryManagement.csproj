@@ -2145,6 +2145,9 @@
     <Content Include="SlideImg\l1.jpg" />
     <Content Include="SlideImg\l2.jpg" />
     <Content Include="SlideImg\l3.jpg" />
+    <Content Include="SweetAlert\Scripts\sweetalert-dev.js" />
+    <Content Include="SweetAlert\Scripts\sweetalert.min.js" />
+    <Content Include="SweetAlert\Styles\sweetalert.css" />
     <Content Include="UserScreen\UserHome.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>

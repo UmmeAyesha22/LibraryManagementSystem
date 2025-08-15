@@ -34,6 +34,10 @@
 
  <script src="Bootstrap/js/bootstrap.min.js"></script>
 
+ <%--7.sweetalert--%>
+    <link href="SweetAlert/Styles/sweetalert.css" rel="stylesheet" />
+    <script src="SweetAlert/Scripts/sweetalert.min.js"></script>
+
 
 </head>
 <body>
@@ -170,11 +174,13 @@
                                <label>Password</label>
                                      <div class="form-group">
                                          <asp:TextBox ID="txtPassword" CssClass="form-control" placeholder="Password" TextMode="Password" runat="server"></asp:TextBox>
+                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter valid password" ControlToValidate="txtPassword" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                      </div>
                                          <label>Full Name</label>
                                                      <div class="form-group">
                                                     <asp:TextBox ID="txtFullName" CssClass="form-control" placeholder="Full Name"  runat="server"></asp:TextBox>
-                                                 </div>
+                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Enter full name" ControlToValidate="txtFullName" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                                     </div>
                                         
 
 
@@ -199,8 +205,10 @@
                                  <label>EmailID</label>
                                 <div class="form-group">
                                     <asp:TextBox ID="txtEmail" CssClass="form-control" placeholder="Email" TextMode="Email" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="enter valid email address" ControlToValidate="txtEmail" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="enter valid email address" ControlToValidate="txtEmail" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                                 </div>
-                                                                    </div>
+                         </div>
 
                                     <div class="col-4">
                                          <label>State</label>

@@ -17,11 +17,11 @@ namespace LibraryManagement
             Exception ex = Server.GetLastError(); Server.ClearError();
             if (ex.InnerException != null)
             {
-                Response.Redirect("../ErrorPage.aspx?ErrorMessage=" + ex.InnerException.Message);
+                Response.Redirect("ErrorPage.aspx?ErrorMessage=" + ex.InnerException.Message);
             }
             else
             {
-                Response.Redirect("../ErrorPage.aspx?ErrorMessage=" + ex.Message);
+                Response.Redirect("ErrorPage.aspx?ErrorMessage=" + ex.Message);
             }
         }
     }
