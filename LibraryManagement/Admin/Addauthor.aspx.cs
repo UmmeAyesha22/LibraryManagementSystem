@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,7 @@ namespace LibraryManagement.Admin
             if (!IsPostBack)
             {
                 Autogenerate();
+                BindRepeater();
             }
         }
 
@@ -34,6 +36,7 @@ namespace LibraryManagement.Admin
                 dbcon.CloseCon();
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", "swal('Success','Saved successfully','success')", true);
                 clrcontrol();
+                BindRepeater();
                 Autogenerate();
 
             }
@@ -80,6 +83,55 @@ namespace LibraryManagement.Admin
                 Response.Write("<script> alert(" + ex.Message + ")</script>");
 
             }
+        }
+
+        protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName=="edit")
+            {
+                string[] commandArgs = e.CommandArgument.ToString().Split(new char[] { '&' });
+                string id =commandArgs[0];
+                SearchDataForUpdate(Convert.ToInt32(id));
+            }
+            else if(e.CommandName == "delete"){
+
+            }
+        }
+
+        private void SearchDataForUpdate(int idd)
+        {
+            cmd = new SqlCommand("", dbcon.GetCon());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@ID",idd);
+            SqlDataAdapter da =new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            da.Fill(ds, "dt");
+            dbcon.CloseCon();
+            if(ds.Tables[0].Rows.Count > 0)
+            {
+                Session["AuthorID"] = ds.Tables[0].Rows[0]["author_id"].ToString();
+                txtID.Text = ds.Tables[0].Rows[0]["author_id"].ToString();
+               txtAuthorName.Text = ds.Tables[0].Rows[0]["author_name"].ToString();
+            }
+            else
+            {
+                Response.Write("<script> alert('Error! No record found');</script>");
+            }
+        }
+
+        protected void BindRepeater()
+        {
+            cmd = new SqlCommand("spGetAuthor", dbcon.GetCon());
+            cmd.CommandType = CommandType.StoredProcedure;
+            DataTable dt =new DataTable();
+            dbcon.OpenCon();
+            SqlDataAdapter da =new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            Repeater1.DataSource = dt;
+            Repeater1.DataBind();
+
         }
     }
 }
