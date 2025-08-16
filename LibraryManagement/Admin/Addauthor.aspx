@@ -30,6 +30,8 @@
               <div class="col-lg-6 px-lg-4">
                 <div class="form-group mb-4">
                     <asp:Button Id="btnAdd"  Text="Submit" CssClass="btn btn-success" Height="50px" Width="200px" runat="server" OnClick="btnAdd_Click" />
+                    <asp:Button ID="btnUpdate" CssClass="btn btn-info" runat="server" Text="Update" Height="50px" Width="120px" Visible="false" Onclick="btnUpdate_Click" />
+                    <asp:Button ID="btnCancel" runat="server"  Text="Cancel" Height="50px" Width="120px" Visible="false"  OnClick="btnCancel_Click"/>
                 </div>
             </div>
         </div>
@@ -41,7 +43,7 @@
                 <hr />
                 <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
                     <HeaderTemplate>
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table-hover ">
                             <thead class="alert-info">
                                 <tr>
                                     <th><span>Author ID</span></th>
@@ -55,7 +57,7 @@
                         <tr>
                             <td><%#Eval("author_id") %> </td>
                             <td><%#Eval("author_name") %> </td>
-                            <td style="width:10%">
+                            <td style="width:12%">
                                 <asp:LinkButton ID="lnkEdit" class="table-link text-primary" runat="server" CommandArgument='<%#Eval("author_id") %>' CommandName="edit" ToolTip="Edit record">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
@@ -63,7 +65,7 @@
                                     </span>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton ID="lnkDelete" class="table-link text-danger" runat="server" CommandArgument='<%#Eval("author_id") %>' CommandName="delete" Text="Delete" ToolTip="Delete Record" OnClientClick="return confirm('Do you want to delete this row?');">
+                                <asp:LinkButton ID="lnkDelete" class="table-link text-danger" runat="server" CommandArgument='<%#Eval("author_id") %>' CommandName="delete"  ToolTip="Delete Record" OnClientClick="return confirm('Do you want to delete this row?');">
                                 <span class="fa-stack">
                                     <i class="fa fa-square fa-stack-2x"></i>
                                     <i class="fa fa-trash fa-stack-1x fa-inverse"></i>

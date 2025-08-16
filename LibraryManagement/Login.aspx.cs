@@ -40,7 +40,8 @@ namespace LibraryManagement
             }
             else
             {
-                Response.Write("<script> alert('Invalid username or password');</script>");
+               
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", "swal('Invalid username or password')", true);
             }
         }
 
@@ -58,7 +59,7 @@ namespace LibraryManagement
             {
                 while (dr.Read())
                 {
-                    Response.Write("<script> alert('Login Successfully');</script>");
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", "swal('Success','Login Successfully','success')", true);
                     Session["Adminrole"] = "Admin";
                     Session["Adminusername"] = dr.GetValue(0).ToString();
                     Session["Adminfullname"] = dr.GetValue(2).ToString();
@@ -69,7 +70,7 @@ namespace LibraryManagement
             }
             else
             {
-                Response.Write("<script> alert('Invalid username or password');</script>");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", "swal('Error','Invalid username or password','error')", true);
             }
 
         }

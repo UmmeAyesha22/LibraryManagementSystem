@@ -26,7 +26,7 @@ namespace LibraryManagement.Admin
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-             cmd = new SqlCommand("sp_InsertAuthor", dbcon.GetCon());
+            cmd = new SqlCommand("sp_InsertAuthor", dbcon.GetCon());
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id",txtID.Text);
             cmd.Parameters.AddWithValue("@name",txtAuthorName.Text);
@@ -93,17 +93,42 @@ namespace LibraryManagement.Admin
                 string id =commandArgs[0];
                 SearchDataForUpdate(Convert.ToInt32(id));
             }
-            else if(e.CommandName == "delete"){
+            else if(e.CommandName == "delete")
+            {
+                string[] commandArgs = e.CommandArgument.ToString().Split(new char[] { '&' });
+                string id = commandArgs[0];
+                cmd = new SqlCommand("sp_DeleteAuthor", dbcon.GetCon());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@ID", id);
+                dbcon.OpenCon();
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    dbcon.CloseCon();
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", "swal('Success','Deleted successfully','success')", true);
+                    clrcontrol();
+                    BindRepeater();
+                    Autogenerate();
+                    btnAdd.Visible = true;
+                    btnUpdate.Visible = false;
+                    btnCancel.Visible = false;
 
+                }
+                else
+                {
+                    dbcon.CloseCon();
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", "swal('Error','Deletation failed','error')", true);
+                }
             }
         }
 
         private void SearchDataForUpdate(int idd)
         {
-            cmd = new SqlCommand("", dbcon.GetCon());
+            cmd = new SqlCommand("spGetAuthorByID", dbcon.GetCon());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue("@ID",idd);
+            dbcon.OpenCon();
             SqlDataAdapter da =new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
@@ -113,11 +138,15 @@ namespace LibraryManagement.Admin
             {
                 Session["AuthorID"] = ds.Tables[0].Rows[0]["author_id"].ToString();
                 txtID.Text = ds.Tables[0].Rows[0]["author_id"].ToString();
-               txtAuthorName.Text = ds.Tables[0].Rows[0]["author_name"].ToString();
+                txtAuthorName.Text = ds.Tables[0].Rows[0]["author_name"].ToString();
+                btnAdd.Visible = false;
+                btnUpdate.Visible = true;
+                btnCancel.Visible = true;
             }
             else
             {
-                Response.Write("<script> alert('Error! No record found');</script>");
+                
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", "swal('Error! No record found','error')", true);
             }
         }
 
@@ -133,5 +162,41 @@ namespace LibraryManagement.Admin
             Repeater1.DataBind();
 
         }
+
+        
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            cmd = new SqlCommand("sp_UpdateAuthor", dbcon.GetCon());
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", txtID.Text);
+            cmd.Parameters.AddWithValue("@name", txtAuthorName.Text);
+            dbcon.OpenCon();
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                dbcon.CloseCon();
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", "swal('Success','Updated successfully','success')", true);
+                clrcontrol();
+                BindRepeater();
+                Autogenerate();
+                btnAdd.Visible=true;
+                btnUpdate.Visible = false;
+                btnCancel.Visible=false;
+
+            }
+            else
+            {
+                dbcon.CloseCon();
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", "swal('Error','Updating failed','error')", true);
+            }
+
+        }
+
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminHome.aspx");
+        }
+
     }
 }
