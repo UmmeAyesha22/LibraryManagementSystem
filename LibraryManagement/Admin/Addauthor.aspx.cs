@@ -12,7 +12,7 @@ namespace LibraryManagement.Admin
     public partial class Addauthor : System.Web.UI.Page
     {
         DBConnect dbcon = new DBConnect();
-        SqlCommand cmd = new SqlCommand();
+        SqlCommand cmd;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
