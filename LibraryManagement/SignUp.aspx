@@ -90,7 +90,7 @@
          </div>
      </nav>
 
-     <div class="jumbotron text-center alert alert-primary" style=""margin-bottom: 0">
+     <div class="jumbotron text-center alert alert-primary" style="margin-bottom: 0">
          <h1>Library Management System</h1>
          <p>Building community.Inspiring readers .Expanding book excess!</p>
 
@@ -105,7 +105,7 @@
                   <li class="nav-item">
                       <a class="nav-link active" href="#">Active</a>
                   </li>
-                                          <li class="nav-item">
+                     <li class="nav-item">
                      <a class="nav-link " href="#">Link</a>
                  </li>
                                           <li class="nav-item">
@@ -279,7 +279,7 @@
          </div>
 
      </div>
-
+       </div>
      <br />
      <div class="jumbotron text-center alert alert-danger" style="margin-bottom:0; border:2px solid red">
           <p>Footer</p>
